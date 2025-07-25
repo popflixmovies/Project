@@ -93,7 +93,8 @@ const App = () => {
         } />
 
         {/* Description Route */}
-        <Route path='/movie/:id' element={<Description />} />
+        
+        <Route path='/movie/:id'  element={<Description moviesList={moviesList} />}/>
       </Routes>
     </Router>
   );
