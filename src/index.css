@@ -1,1 +1,44 @@
 @import "tailwindcss";
+
+header {
+    margin: 0;
+    padding-bottom: 100px;
+ background: linear-gradient(180deg, #948979, #393E46); 
+ height: 800px;
+}
+
+.Search {
+    margin-left: 450px;
+    margin-right: 450px;
+    margin-top: 40px;
+    
+    width: full;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    height: 30px;
+    border-radius: 10px;
+    border: 2px solid transparent; /* Optional: A transparent border can help define the edge */
+}
+
+.input{
+    background-color: #222831;
+    padding-left: 12px;
+    height: 40px;
+    border-radius: 10px
+}
+.input:focus{
+    outline: none;
+    box-shadow: 0 0 7px 5px rgb(54, 81, 135);
+}
+
+.section-two{
+    background: linear-gradient(#01263a,#9f9630);
+    padding-bottom: 50px;
+    padding-top: 0;
+    width: 100%;
+}
+
+.year{
+    color: #7b7c7c;
+}
