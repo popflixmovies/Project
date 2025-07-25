@@ -5,6 +5,7 @@ import MovieCard from "./components/movieCard";
 import NavbarMain from "./components/NavbarDefault";
 import Description from "./components/Description";
 import { Link } from 'react-router-dom';
+import WatchPage from "./components/WatchPage";
 
 const API_BASE_URL = 'https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc';
 const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
@@ -55,7 +56,7 @@ const App = () => {
         <Route path="/" element={
           <main>
             <div className="wrapper">
-              <header>
+              <header >
                 <NavbarMain />
                 <div className="relative w-screen justify-center items-center flex pt-[80px] mb-[50px]  h-[300px]" >
                   <img src="../two.jpg" alt="" className="inline-block  h-64 w-44 absolute z-0 top-0 left-[34%] transform -rotate-7 translate-y-8 rounded-xl" />
@@ -95,6 +96,8 @@ const App = () => {
         {/* Description Route */}
         
         <Route path='/movie/:id'  element={<Description moviesList={moviesList} />}/>
+        <Route path='/watch/:id'  element={<WatchPage moviesList={moviesList} />}/>
+
       </Routes>
     </Router>
   );

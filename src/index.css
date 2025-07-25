@@ -7,6 +7,21 @@ header {
  height: 800px;
 }
 
+.header{
+    margin: 0;
+    padding-top: 50px;
+    padding-bottom: 100px;
+ background: linear-gradient(180deg, #948979, #393E46); 
+ height: fit-content;
+}
+
+.image{
+   border-radius: 1.5rem; /* or whatever you want */
+  overflow: hidden;
+  display: block;
+  object-fit: cover;
+}
+
 .Search {
     margin-left: 450px;
     margin-right: 450px;
