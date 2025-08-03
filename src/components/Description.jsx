@@ -1,11 +1,29 @@
 import React from "react";
-import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
-const Description = ({ moviesList }) => {
+import { useParams } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import axios from 'axios'; // or fetch
+import Loading from "./LoadingPage";
+const Description = () => {
   const { id } = useParams();
-  const movie = moviesList.find((movie) => movie.id === parseInt(id));
+  const [movie, setMovie] = useState(null);
 
-  if (!movie) return <div className="text-black text-center justify-center text-3xl">Movie not found</div>;
+  useEffect(() => {
+    const fetchMovie = async () => {
+      try {
+        const apiKey = import.meta.env.VITE_TMDB_API_KEY;
+        const response = await axios.get(`https://api.themoviedb.org/3/movie/${id}?api_key=${apiKey}`);
+        setMovie(response.data);
+      } catch (error) {
+        console.error('Failed to fetch movie:', error);
+      }
+    };
+
+    fetchMovie();
+  }, [id]);
+
+
+  if (!movie) return <div className="text-black text-center justify-center text-3xl"><Loading/></div>;
 
   const { title, overview, poster_path, release_date, vote_average } = movie;
 
@@ -15,7 +33,7 @@ const Description = ({ moviesList }) => {
  
 
 return (
-    <div className="w-screen min-h-screen bg-gradient-to-b from-[#948979] to-[#393E46] text-white overflow-x-hidden">
+    <div className="w-screen min-h-screen bg-[#393E46] text-white overflow-x-hidden">
       <h1 className="text-4xl font-bold text-center mb-6 pt-10 pb-10">{title}</h1>
 
       <div className="flex flex-col items-center gap-6">

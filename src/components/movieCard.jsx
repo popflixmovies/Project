@@ -2,9 +2,9 @@ import React from "react";
 import { Link } from "react-router-dom";
 const MovieCard = ({movie: {title, poster_path, vote_average, release_date, id}}) => {
     return(
-        <Link to={`/movie/${id}`}>
+    <Link to={`/movie/${id}`} key={id}>
         <div className="bg-black-100 p-1 rounded-2xl shadow-inner shadow-light-100/10 ">
-          <img src={poster_path ? `https://image.tmdb.org/t/p/w500/${poster_path}` : '/no-movie.png'} alt={title}  className="hover:ring-4 ring-blue-400 rounded-2xl h-[200px]"/>
+          <img src={poster_path ? `https://image.tmdb.org/t/p/w500/${poster_path}` : '/no-movie.png'} alt={title}  className="transition-transform duration-300 hover:scale-105 rounded-2xl h-[200px]"/>
         <div className="mt-4 text-white align-center justify-left flex mb-2">
           <h3>{title}</h3>
          </div>
