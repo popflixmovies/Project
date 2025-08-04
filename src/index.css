@@ -2,15 +2,15 @@
 
 header {
     margin: 0;
-    padding-bottom: 100px;
+   
  background: linear-gradient(180deg, #948979, #393E46); 
- height: 800px;
+ height: 100vh;
 }
 
 .header{
+  
     margin: 0;
-    padding-top: 50px;
-    padding-bottom: 100px;
+   
  background: linear-gradient(180deg, #948979, #393E46); 
  height: fit-content;
 }
@@ -51,6 +51,7 @@ header {
     background: linear-gradient(#01263a,#9f9630);
     padding-bottom: 50px;
     padding-top: 0;
+    padding-left: 2%;
     width: 100%;
 }
 

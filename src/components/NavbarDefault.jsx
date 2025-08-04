@@ -16,29 +16,27 @@ const NavbarMain = () => {
 
   return (
    
-      <div expand="lg" className="bg-transparent ">
+      <div expand="lg" className="bg-transparent fixed top-0 left-0 w-full h-16 z-50">
      
         <div fluid className="flex justify-between items-center mb-[60px]">
-        
-      <Link to={`/`}>   
-        <div className="text-white pt-9 pl-12 text-xl font-serif">
+       
+        <div className="text-white  text-[24px] pt-9 pl-12 text-xl font-serif">
          
           PopFlix
 
         </div>
-      </Link>
       
-          <div className="navbar-collapse flex justify-end" visible={visible}>
+          <div className="navbar-collapse flex justify-end decoration-none" visible={visible}>
             <div className="flex gap-8 pt-9 pr-12">
-            <CNavLink href="#Movies" active className="text-white text-xl font-serif">
+            <a style={{textDecoration:"none" }} active className="text-white text-[20px]  font-serif">
               Movies
-            </CNavLink>
-            <CNavLink href="#" className="text-white text-xl font-serif">
+            </a>
+            <a style={{textDecoration:"none" }} className="text-white text-[20px]  font-serif">
               Tv-Series
-            </CNavLink>
-            <CNavLink href="#" className="text-white text-xl font-serif">
+            </a>
+            <a style={{textDecoration:"none" }} className="text-white text-[20px] font-serif">
               About-Us
-            </CNavLink>
+            </a>
             </div>
           </div>
      </div> 

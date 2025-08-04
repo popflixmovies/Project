@@ -33,7 +33,7 @@ const Description = () => {
  
 
 return (
-    <div className="w-screen min-h-screen bg-[#393E46] text-white overflow-x-hidden">
+    <div className="w-screen min-h-screen bg-[#393E46] text-white overflow-x-hidden pb-[40px]">
       <h1 className="text-4xl font-bold text-center mb-6 pt-10 pb-10">{title}</h1>
 
       <div className="flex flex-col items-center gap-6">
@@ -51,14 +51,14 @@ return (
 
         <p className="text-sm text-gray-400 text-white">Release Date: {release_date}</p>
 
-        <div className="flex items-center gap-2">
-          <img src="/star-2768.svg" alt="Star Icon" className="h-4 w-4" />
-          <p className="text-lg">{vote_average ? vote_average.toFixed(1) : "N/A"}</p>
+        <div className="flex items-left justify-center gap-2">
+          <img src="./public/star-2768.svg" alt="Star Icon" className="pt-1 h-6 w-6" />
+          <p className="text-lg p-0">{vote_average ? vote_average.toFixed(1) : "N/A"}</p>
         </div>
 <Link to={`/watch/${id}`}>
-        <button className="mt-4 mb-8 bg-red-500 hover:bg-red-700 text-white py-2 px-6 rounded-full">
-          Watch Now
-        </button>
+       <button  style={{ borderRadius: '1rem',paddingBottom: '20px' }} className="mt-4 mb-8 bg-red-500 hover:bg-red-700 text-white py-2 px-6 rounded-3xl shadow-lg">
+  Watch Now
+</button>
         
 </Link>
       </div>

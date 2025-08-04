@@ -1,3 +1,4 @@
+import UncontrolledExample from "./components/carousel"
 import React, { useEffect, useState } from "react";
 import { useDebounce } from "react-use";
 import { HashRouter as Router, Routes, Route } from "react-router-dom";
@@ -7,7 +8,7 @@ import NavbarMain from "./components/NavbarDefault";
 import Description from "./components/Description";
 import { Link } from 'react-router-dom';
 import WatchPage from "./components/WatchPage";
-import {updateSearchCount, getTrendingMovies} from './appwrite'
+// import {updateSearchCount, getTrendingMovies} from './appwrite'
 import TvSeries from "./components/TvSeries";
 import DescriptionForShows from "./components/DescriptionForShows";
 import SeriesWatchPage from "./components/SeriesWatchPage";
@@ -118,9 +119,14 @@ useEffect(()=>{
         <Route path="/" element={
           <main>
             <div className="wrapper">
-              <header >
+              <header className="pt-[0px] relative z-10">
                 <NavbarMain />
-                <div className="relative w-screen justify-center items-center flex pt-[80px] mb-[50px]  h-[300px]" >
+
+ 
+  <section >
+              <UncontrolledExample />
+            </section>
+                {/* <div className="relative w-screen justify-center items-center flex pt-[80px] mb-[50px]  h-[300px]" >
                   <img src="/PopFlix/two.jpg" alt="" className="inline-block  h-64 w-44 absolute z-0 top-0 left-[34%] transform -rotate-7 translate-y-8 rounded-xl" />
                   <img src="/PopFlix/one.jpg" alt="" className="inline-block h-72 w-50 absolute z-20 top-0 left-[42%] right-[47%] rounded-xl filter drop-shadow-lg" />
                   <img src="/PopFlix/three.jpg" alt="" className="inline-block h-64 w-44 absolute z-0 top-0 right-[37%] transform rotate-8 translate-y-8  rounded-xl" />
@@ -128,7 +134,7 @@ useEffect(()=>{
                 <h1 className="text-4xl font-semibold items-center text-center mt-10 text-white">
                   Find <span className="bg-gradient-to-r from-indigo-200 to-indigo-400 text-transparent bg-clip-text ">Movies</span> You Will Enjoy Without The Hassle!
                 </h1>
-                <Search searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
+                <Search searchTerm={searchTerm} setSearchTerm={setSearchTerm} /> */}
               </header>
 
               <section className="section-two">
