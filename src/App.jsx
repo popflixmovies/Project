@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDebounce } from "react-use";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { HashRouter as Router, Routes, Route } from "react-router-dom";
 import Search from "./components/search";
 import MovieCard from "./components/movieCard";
 import NavbarMain from "./components/NavbarDefault";
@@ -53,9 +53,9 @@ const fetchShows = async(query)=>{
         
         setTvSeriesList(data.results);
            
-        if(query && data.results.length >0){
-          await updateSearchCount(query, data.results[0]);
-        }
+        // if(query && data.results.length >0){
+        //   await updateSearchCount(query, data.results[0]);
+        // }
       }
     
   } catch (error) {
@@ -83,9 +83,9 @@ useEffect(()=>{
         setMoviesList([]);
       } else {
         setMoviesList(data.results);
-        if(query && data.results.length >0){
-          await updateSearchCount(query, data.results[0]);
-        }
+        // if(query && data.results.length >0){
+        //   await updateSearchCount(query, data.results[0]);
+        // }
       }
     } catch (err) {
       setErrorMessage("An error occurred while fetching movies.");
@@ -95,22 +95,22 @@ useEffect(()=>{
     }
   }
 
-  const loadTrendingMovies = async () => {
-    try{
-      const movies = await getTrendingMovies();
-      setTrendingMovies(movies)
-    } catch (err) {
-      console.error(err)
-    }
-  }
+  // const loadTrendingMovies = async () => {
+  //   try{
+  //     const movies = await getTrendingMovies();
+  //     setTrendingMovies(movies)
+  //   } catch (err) {
+  //     console.error(err)
+  //   }
+  // }
 
   useEffect(() => {
     fetchMovies(debouncedSearchTerm);
   }, [debouncedSearchTerm]);
 
-  useEffect(()=>{
-    loadTrendingMovies()
-  }, [])
+  // useEffect(()=>{
+  //   loadTrendingMovies()
+  // }, [])
   return (
     <Router>
       <Routes>
@@ -121,9 +121,9 @@ useEffect(()=>{
               <header >
                 <NavbarMain />
                 <div className="relative w-screen justify-center items-center flex pt-[80px] mb-[50px]  h-[300px]" >
-                  <img src="/two.jpg" alt="" className="inline-block  h-64 w-44 absolute z-0 top-0 left-[34%] transform -rotate-7 translate-y-8 rounded-xl" />
-                  <img src="/one.jpg" alt="" className="inline-block h-72 w-50 absolute z-20 top-0 left-[42%] right-[47%] rounded-xl filter drop-shadow-lg" />
-                  <img src="/three.jpg" alt="" className="inline-block h-64 w-44 absolute z-0 top-0 right-[37%] transform rotate-8 translate-y-8  rounded-xl" />
+                  <img src="/PopFlix/two.jpg" alt="" className="inline-block  h-64 w-44 absolute z-0 top-0 left-[34%] transform -rotate-7 translate-y-8 rounded-xl" />
+                  <img src="/PopFlix/one.jpg" alt="" className="inline-block h-72 w-50 absolute z-20 top-0 left-[42%] right-[47%] rounded-xl filter drop-shadow-lg" />
+                  <img src="/PopFlix/three.jpg" alt="" className="inline-block h-64 w-44 absolute z-0 top-0 right-[37%] transform rotate-8 translate-y-8  rounded-xl" />
                 </div>
                 <h1 className="text-4xl font-semibold items-center text-center mt-10 text-white">
                   Find <span className="bg-gradient-to-r from-indigo-200 to-indigo-400 text-transparent bg-clip-text ">Movies</span> You Will Enjoy Without The Hassle!
@@ -134,7 +134,7 @@ useEffect(()=>{
               <section className="section-two">
                 <div>
                   
-                    
+                  {/* <div>
                     {trendingMovies.length > 0 ? (
                       <div>
                     <h2 className="flex justify-center text-white text-3xl pb-12 pt-18">Trending</h2>
@@ -142,7 +142,9 @@ useEffect(()=>{
   {trendingMovies.slice(0, 5).map((movie, index) => (
     <li key={movie.$id} className="relative flex items-end justify-center transition-transform duration-300 hover:scale-105">
       {/* Image */}
-      <Link to={`/movie/${movie.movie_id}`}>
+
+
+      {/* <Link to={`/movie/${movie.movie_id}`}>
       <img
         src={movie.poster_url}
         alt={movie.title}
@@ -150,15 +152,17 @@ useEffect(()=>{
       />
       </Link>
       {/* Large number underneath the image */}
-      <p className="absolute text-[120px] font-bold text-white z-0 top-10 right-50 ">
+      {/* <p className="absolute text-[120px] font-bold text-white z-0 top-10 right-50 ">
         {index + 1}
-      </p>
-    </li>
+      </p> */}
+    {/* </li>
   ))}
 </ul>
-                      </div>
-                     ): (
+                      </div> */}
+                     {/* ): (
                     <h1>Oops!</h1>)}
+                    
+                    </div>  */}
                  <section id="Movies">
                   <h2 className="flex justify-center text-white text-3xl pb-12 pt-18">Popular</h2>
 
