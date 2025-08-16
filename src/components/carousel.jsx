@@ -1,63 +1,60 @@
 import React, { useEffect, useState } from "react";
-import Carousel from "react-bootstrap/Carousel";
+import { Carousel } from "react-bootstrap";
 import { Link } from "react-router-dom";
-
-function UncontrolledExample() {
-  const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
-  const API_URL = `https://api.themoviedb.org/3/trending/movie/day?api_key=${API_KEY}`;
-
+const UncontrolledExample = () => {
   const [movies, setMovies] = useState([]);
-  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    async function fetchTrendingMovies() {
-      try {
-        const response = await fetch(API_URL);
-        const data = await response.json();
-        setMovies(data.results || []);
-      } catch (error) {
-        console.error("Failed to fetch movies:", error);
-      } finally {
-        setLoading(false);
-      }
-    }
-    fetchTrendingMovies();
-  }, [API_URL]);
+    const fetchMovies = async () => {
+      const api_key = import.meta.env.VITE_TMDB_API_KEY;
+      const res = await fetch(
+        `https://api.themoviedb.org/3/movie/popular?api_key=${api_key}&language=en-US&page=1`
+      );
+      const data = await res.json();
 
-  if (loading) {
-    return <p className="text-white text-center mt-10">Loading movies...</p>;
-  }
+      // Only high-quality images
+      const filtered = data.results.filter(
+        (movie) => movie.backdrop_path && movie.vote_average >= 6.5
+      );
+
+      setMovies(filtered.slice(0, 8));
+    };
+
+    fetchMovies();
+  }, []);
 
   return (
-    <Carousel className="w-screen h-screen">
-      {movies.slice(0, 5).map((movie) => {
-        const originalUrl = `https://image.tmdb.org/t/p/original${movie.backdrop_path}`;
-        return (
-          <Carousel.Item key={movie.id} active>
-            <Link to={`/movie/${movie.id}`}>
-              <img
-                src={originalUrl}
-                srcSet={`
-                  https://image.tmdb.org/t/p/w780${movie.backdrop_path} 780w,
-                  https://image.tmdb.org/t/p/w1280${movie.backdrop_path} 1280w,
-                  ${originalUrl} 1920w
-                `}
-                sizes="100vw"
-                alt={movie.title}
-                className="w-screen h-screen object-cover"
-              />
-            <Carousel.Caption className="rounded-xl p-3 text-left">
-  <h1 className="font-serif text-[080503]/70">
-    {movie.title}
-  </h1>
- 
-            </Carousel.Caption>
-            </Link>
-          </Carousel.Item>
-        );
-      })}
-    </Carousel> 
- );
-}
+    <div className="w-screen h-screen overflow-hidden relative">
+      <Carousel fade controls indicators interval={5000} className="z-0 h-full">
+        {movies.map((movie) => {
+          const imgUrl = `https://image.tmdb.org/t/p/original${movie.backdrop_path}`;
+          return (
+            <Carousel.Item key={movie.id}>
+              {/* Responsive Aspect Ratio Container */}
+              <Link to={`/movie/${movie.id}`}>
+              <div className="w-screen h-screen aspect-video sm:aspect-video md:aspect-video lg:aspect-video xl:aspect-video 2xl:aspect-video
+                              xs:aspect-[9/16] sm:aspect-[9/16] md:aspect-[16/9] lg:aspect-[16/9] overflow-hidden">
+                <img
+                  src={imgUrl}
+                  alt={movie.title}
+                  loading="lazy"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              </Link>
+
+              {/* Caption Overlay */}
+              <Carousel.Caption>
+                <h1 className="text-white text-lg sm:text-2xl md:text-3xl font-bold font-serif">
+                  {movie.title}
+                </h1>
+              </Carousel.Caption>
+            </Carousel.Item>
+          );
+        })}
+      </Carousel>
+    </div>
+  );
+};
 
 export default UncontrolledExample;

@@ -5,7 +5,7 @@ const MovieCard = ({
   movie: { title, poster_path, vote_average, release_date, id },
 }) => {
   return (
-      <div className="bg-black-100 p-1 rounded-2xl shadow-inner shadow-light-100/10 ">
+      <div className=" p-1 shadow-inner shadow-light-100/10 ">
         <Link to={`/movie/${id}`}>
         
         <img
@@ -15,7 +15,7 @@ const MovieCard = ({
               : "/no-movie.png"
           }
           alt={title}
-          className="transition-transform duration-300 hover:scale-105 rounded-2xl h-[200px]"
+          className="shadow-blue-400 transition-transform duration-300 hover:scale-105 rounded-2xl h-[200px]"
         />
         </Link>
         <div className="mt-4 text-white align-center text-[18px] justify-left flex mb-2">
